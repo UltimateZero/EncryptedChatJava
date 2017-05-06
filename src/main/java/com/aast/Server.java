@@ -28,6 +28,7 @@ public class Server {
     private ServerSocket serverSocket;
     private ClientListener listener;
     private Thread listeningThread;
+    private boolean running = false;
 
     public Server(int port) throws IOException {
         serverSocket = new ServerSocket(port);
@@ -37,10 +38,11 @@ public class Server {
     }
 
     public boolean startListening() {
+        running = true;
         listeningThread = new Thread(new Runnable() {
             @Override
             public void run() {
-                while(true) {
+                while(running) {
                     try {
                         Socket socket = serverSocket.accept();
                         Client client = new Client(socket);
@@ -59,12 +61,15 @@ public class Server {
     }
 
     public void stop() {
-        listeningThread.interrupt();
-        try {
-            listeningThread.join();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        running = false;
+    	if(listeningThread != null) {
+		    try {
+			    listeningThread.join();
+		    } catch (InterruptedException e) {
+			    e.printStackTrace();
+		    }
+	    }
+
         try {
             serverSocket.close();
         } catch (IOException e) {

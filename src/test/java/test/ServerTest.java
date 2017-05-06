@@ -16,18 +16,21 @@ public class ServerTest {
 	public void setUp() throws Exception {
 		try {
 			server = new Server(54543);
+			System.out.println("Listening on port "+ 54543);
 		} catch (Exception e){
 			server = new Server(54545);
+			System.out.println("Listening on alt port "+ 54545);
 		}
 	}
 
 	@After
 	public void tearDown() {
+		System.out.println("Tearing down...");
 		server.stop();
 	}
 
 	@Test
-	public void testAdd() {
+	public void testJUnit() {
 		String str = "Junit is working fine";
 		assertEquals("Junit is working fine",str);
 	}
