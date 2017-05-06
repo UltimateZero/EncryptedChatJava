@@ -29,6 +29,6 @@ public class ServerTest {
 
 	@Test(expected = IdException.class)
 	public void setInvalidId() throws Exception {
-		server.setId(-1);
+		server.setId(2);
 	}
 }
