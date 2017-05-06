@@ -4,8 +4,6 @@ import com.aast.Server;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.io.IOException;
-
 import static org.junit.Assert.assertEquals;
 
 /**
@@ -15,7 +13,11 @@ public class ServerTest {
 	Server server;
 	@Before
 	public void setUp() throws Exception {
-		server = new Server();
+		try {
+			server = new Server(54543);
+		} catch (Exception e){
+			server = new Server(54545);
+		}
 	}
 
 	@Test
@@ -26,17 +28,7 @@ public class ServerTest {
 
 	@Test
 	public void startListeningTest() {
-		boolean result = false;
-		try {
-			result = server.startListening();
-		} catch (Exception e) {
-			try {
-				server = new Server(4456);
-				server.startListening();
-			} catch (IOException e1) {
-				e1.printStackTrace();
-			}
-		}
+		boolean result = server.startListening();
 		assertEquals(true, result);
 	}
 
