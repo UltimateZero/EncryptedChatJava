@@ -1,7 +1,6 @@
 package test;
 
 import com.aast.Server;
-import com.aast.exceptions.IdException;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -14,21 +13,20 @@ public class ServerTest {
 	Server server;
 	@Before
 	public void setUp() throws Exception {
-		server = new Server(1);
-	}
-	@Test
-	public void getId() throws Exception {
-		assertEquals(1, server.getId());
+		server = new Server();
 	}
 
 	@Test
-	public void setId() throws Exception {
-		server.setId(3);
-		assertEquals(3, server.getId());
+	public void testAdd() {
+		String str = "Junit is working fine";
+		assertEquals("Junit is working fine",str);
 	}
 
-	@Test(expected = IdException.class)
-	public void setInvalidId() throws Exception {
-		server.setId(-1);
+	@Test
+	public void startListeningTest() {
+		boolean result = server.startListening();
+		assertEquals(true, result);
 	}
+
+
 }

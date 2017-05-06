@@ -75,16 +75,16 @@
         <module name="GenericWhitespace"/>
         <module name="EmptyStatement"/>
         <module name="PackageDeclaration"/>
-        <module name="RegexpSinglelineJava">
-            <property name="format" value="printStackTrace"/>
-            <property name="message" value="Usage of printStackTrace"/>
-            <property name="ignoreComments" value="true"/>
-        </module>
-        <module name="RegexpSinglelineJava">
-            <property name="format" value="println"/>
-            <property name="message" value="Usage of println"/>
-            <property name="ignoreComments" value="true"/>
-        </module>
+        <!--<module name="RegexpSinglelineJava">-->
+            <!--<property name="format" value="printStackTrace"/>-->
+            <!--<property name="message" value="Usage of printStackTrace"/>-->
+            <!--<property name="ignoreComments" value="true"/>-->
+        <!--</module>-->
+        <!--<module name="RegexpSinglelineJava">-->
+            <!--<property name="format" value="println"/>-->
+            <!--<property name="message" value="Usage of println"/>-->
+            <!--<property name="ignoreComments" value="true"/>-->
+        <!--</module>-->
         <module name="RegexpSinglelineJava">
             <property name="format" value="^\t+"/>
             <property name="message" value="Indent must not use tab characters. Use space instead."/>

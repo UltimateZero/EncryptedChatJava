@@ -14,23 +14,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package com.aast;
 
-import com.aast.gui.MainWindow;
-
-import javax.swing.JFrame;
-import java.io.IOException;
-
-public class Main {
-
-    public static void main(String[] args) throws IOException {
-        JFrame frame = new JFrame("Encrypted Chat");
-        frame.setContentPane(new MainWindow().mainView);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.pack();
-        frame.setSize(800,500);
-        frame.setVisible(true);
-
-    }
+/**
+ * Created by UltimateZero on 5/6/2017.
+ */
+public interface ClientListener {
+    void newClient(Client client);
 }

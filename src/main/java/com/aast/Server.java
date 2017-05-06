@@ -16,21 +16,61 @@
  */
 package com.aast;
 
-import com.aast.exceptions.IdException;
+
+import com.aast.encrypt.EncryptManager;
+
+import java.io.IOException;
+import java.net.ServerSocket;
+import java.net.Socket;
 
 public class Server {
-    private int id;
+    private static final int PORT = 5533;
+    private ServerSocket serverSocket;
+    private ClientListener listener;
 
-    public Server(int id) {
-        this.id = id;
+    public Server(int port) throws IOException {
+        serverSocket = new ServerSocket(port);
+    }
+    public Server() throws IOException {
+        serverSocket = new ServerSocket(PORT);
     }
 
-    public int getId() {
-        return id;
+    public boolean startListening() {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                while(true) {
+                    try {
+                        Socket socket = serverSocket.accept();
+                        Client client = new Client(socket);
+                        System.out.println("Client connected: "+ client);
+                        if(listener != null) {
+                            listener.newClient(client);
+                        }
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        }).start();
+        return true;
     }
 
-    public void setId(int id) throws IdException {
-        if(id < 0) throw new IdException("Id must be > 0");
-        this.id = id;
+    public void setListener(ClientListener listener) {
+        this.listener = listener;
+    }
+
+    public ClientListener getListener() {
+        return listener;
+    }
+
+    public static void main(String[] args) throws IOException {
+        String enc = EncryptManager.encryptAES("testtesttesttestt", "data");
+        System.out.println(enc);
+        System.out.println(EncryptManager.decryptAES("testtesttesttestt", enc));
+        Server server = new Server();
+        System.out.println("Starting listening..");
+        server.startListening();
+        System.out.println("Done");
     }
 }

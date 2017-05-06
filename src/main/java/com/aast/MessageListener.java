@@ -14,12 +14,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+package com.aast;
 
-package com.aast.exceptions;
-
-public class IdException extends Exception {
-
-    public IdException(String message) {
-        super(message);
-    }
+/**
+ * Created by UltimateZero on 5/6/2017.
+ */
+public interface MessageListener {
+    void messageReceived(String message);
+    void rawMessageReceived(String message);
 }
