@@ -1,7 +1,6 @@
 package test;
 
 import com.aast.Server;
-import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
@@ -23,13 +22,6 @@ public class ServerTest {
 		}
 	}
 
-	@AfterClass
-	public static void tearDown() {
-		System.out.println("Tearing down...");
-//		server.stop();
-//		System.exit(0);
-		System.out.println("Done");
-	}
 
 	@Test
 	public void testJUnit() {
