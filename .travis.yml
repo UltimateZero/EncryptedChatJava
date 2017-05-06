@@ -3,7 +3,7 @@ jdk:
   - oraclejdk8
   - oraclejdk7
 install: true
-before_install: mvn checkstyle:checkstyle
+before_install: mvn checkstyle:check
 cache:
   directories:
   - $HOME/.m2
