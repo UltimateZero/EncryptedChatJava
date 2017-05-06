@@ -214,7 +214,7 @@
   <target name="build.modules" depends="init, clean, compile.module.encryptedchat" description="build all modules"/>
   
   <target name="all" depends="build.modules" description="build all"/>
-  <target name="test" depends="compile">
+  <target name="test" depends="compile.module.encryptedchat.tests,build.modules">
 
     <junit printsummary="yes" haltonfailure="no">
 
