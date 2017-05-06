@@ -1,6 +1,7 @@
 package test;
 
 import com.aast.Server;
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -18,6 +19,11 @@ public class ServerTest {
 		} catch (Exception e){
 			server = new Server(54545);
 		}
+	}
+
+	@After
+	public void tearDown() {
+		server.stop();
 	}
 
 	@Test

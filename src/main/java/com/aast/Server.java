@@ -27,6 +27,7 @@ public class Server {
     private static final int PORT = 5533;
     private ServerSocket serverSocket;
     private ClientListener listener;
+    private Thread listeningThread;
 
     public Server(int port) throws IOException {
         serverSocket = new ServerSocket(port);
@@ -36,7 +37,7 @@ public class Server {
     }
 
     public boolean startListening() {
-        new Thread(new Runnable() {
+        listeningThread = new Thread(new Runnable() {
             @Override
             public void run() {
                 while(true) {
@@ -52,8 +53,23 @@ public class Server {
                     }
                 }
             }
-        }).start();
+        });
+        listeningThread.start();
         return true;
+    }
+
+    public void stop() {
+        listeningThread.interrupt();
+        try {
+            listeningThread.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        try {
+            serverSocket.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public void setListener(ClientListener listener) {
