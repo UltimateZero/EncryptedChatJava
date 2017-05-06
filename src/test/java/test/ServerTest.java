@@ -27,7 +27,7 @@ public class ServerTest {
 	public static void tearDown() {
 		System.out.println("Tearing down...");
 //		server.stop();
-		System.exit(0);
+//		System.exit(0);
 		System.out.println("Done");
 	}
 
