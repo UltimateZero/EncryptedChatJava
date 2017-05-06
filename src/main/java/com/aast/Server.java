@@ -62,13 +62,13 @@ public class Server {
 
     public void stop() {
         running = false;
-    	if(listeningThread != null) {
-		    try {
-			    listeningThread.join();
-		    } catch (InterruptedException e) {
-			    e.printStackTrace();
-		    }
-	    }
+        if(listeningThread != null) {
+            try {
+                listeningThread.join();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
 
         try {
             serverSocket.close();
