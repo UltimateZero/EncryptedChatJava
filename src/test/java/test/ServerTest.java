@@ -1,8 +1,8 @@
 package test;
 
 import com.aast.Server;
-import org.junit.After;
-import org.junit.Before;
+import org.junit.AfterClass;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
@@ -11,9 +11,9 @@ import static org.junit.Assert.assertEquals;
  * Created by UltimateZero on 5/6/2017.
  */
 public class ServerTest {
-	Server server;
-	@Before
-	public void setUp() throws Exception {
+	static Server server;
+	@BeforeClass
+	public static void setUp() throws Exception {
 		try {
 			server = new Server(54543);
 			System.out.println("Listening on port "+ 54543);
@@ -23,8 +23,8 @@ public class ServerTest {
 		}
 	}
 
-	@After
-	public void tearDown() {
+	@AfterClass
+	public static void tearDown() {
 		System.out.println("Tearing down...");
 		server.stop();
 	}
