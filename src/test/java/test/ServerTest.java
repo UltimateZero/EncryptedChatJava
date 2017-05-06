@@ -26,7 +26,9 @@ public class ServerTest {
 	@AfterClass
 	public static void tearDown() {
 		System.out.println("Tearing down...");
-		server.stop();
+//		server.stop();
+		System.exit(0);
+		System.out.println("Done");
 	}
 
 	@Test
