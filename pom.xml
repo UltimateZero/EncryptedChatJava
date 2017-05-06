@@ -12,18 +12,18 @@
     <properties>
         <checkstyle.config.location>checkstyle.xml</checkstyle.config.location>
     </properties>
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
+    <!--<build>-->
+        <!--<plugins>-->
+            <!--<plugin>-->
+                <!--<groupId>org.apache.maven.plugins</groupId>-->
+                <!--<artifactId>maven-compiler-plugin</artifactId>-->
                 <!--<configuration>-->
                     <!--<source>1.8</source>-->
                     <!--<target>1.8</target>-->
                 <!--</configuration>-->
-            </plugin>
-        </plugins>
-    </build>
+            <!--</plugin>-->
+        <!--</plugins>-->
+    <!--</build>-->
     <dependencies>
         <!-- https://mvnrepository.com/artifact/commons-codec/commons-codec -->
         <dependency>
